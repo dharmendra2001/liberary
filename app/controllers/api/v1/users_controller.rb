@@ -14,6 +14,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update(user_params) 
+      render json: { message: "updated"}, staus: :ok
+    else
+      render json: { message: "user not found"}
+    end
+       
   end
 
   def destory
