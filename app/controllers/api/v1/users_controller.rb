@@ -23,10 +23,22 @@ class Api::V1::UsersController < ApplicationController
        
   end
 
-  def destory
+  def destroy
+    @user = User.find(params[:id])
+    if @user.destroy 
+      render json: { message: "deleted"}, staus: :ok
+    else
+      render json: { message: "user not found"}
+    end
   end
 
   def show
+    @user = User.find(params[:id])
+    if @user
+      render json: @user, staus: :ok
+    else
+      render json: { message: "user not found"}
+    end
   end
   
   def login
