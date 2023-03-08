@@ -22,7 +22,7 @@ class Api::V1::IssuesController < ApplicationController
   end
 
   def return
-    @book = IssueBook.find_by(user_id: params[:user_id])
+    @book = IssueBook.find_by(book_id: params[:book_id])
     if @book.destroy
       render json: {message: "book return success"}
     else
